@@ -1,16 +1,13 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import HomeIcon from '@mui/icons-material/Home';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import GrainIcon from '@mui/icons-material/Grain';
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import HomeIcon from "@mui/icons-material/Home";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import GrainIcon from "@mui/icons-material/Grain";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-
-
-
-function IconBreadcrumbs():JSX.Element {
+function IconBreadcrumbs(): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
   console.log(slug);
@@ -25,22 +22,18 @@ function IconBreadcrumbs():JSX.Element {
   return (
     <div role="presentation">
       <Breadcrumbs aria-label="breadcrumb">
-        
-        <Link
-          color="inherit"
-          href={'/'}
-          style={{cursor: 'pointer'}}
-        >
-          <a><HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" /> Главная</a>
+        <Link color="inherit" href={"/"} style={{ cursor: "pointer" }}>
+          <a>
+            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" /> Главная
+          </a>
         </Link>
-        
+
         <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
+          sx={{ display: "flex", alignItems: "center" }}
           color="text.primary"
         >
           {slug}
         </Typography>
-        
       </Breadcrumbs>
     </div>
   );
