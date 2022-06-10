@@ -24,7 +24,8 @@ function IconBreadcrumbs(): JSX.Element {
       <Breadcrumbs aria-label="breadcrumb">
         <Link color="inherit" href={"/"} style={{ cursor: "pointer" }}>
           <a>
-            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" /> Главная
+            <HomeIcon sx={{ mr: 0.5, ml: 2, pb: 0 }} fontSize="inherit" />{" "}
+            Главная
           </a>
         </Link>
 

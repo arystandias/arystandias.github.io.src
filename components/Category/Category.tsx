@@ -53,13 +53,9 @@ export default function Category() {
           <Box sx={{ p: 0 }}>
             <>
               <Breadcrumbs />
-              {isMobile ? (
-                <ListMobile />
-              ) : (
-                <Box sx={{ p: 4, minHeight: "80vh" }}>
-                  {/* <ListDesktop /> */}
-                </Box>
-              )}
+              <Box sx={{ p: 4, minHeight: "80vh" }}>
+                {isMobile ? <ListMobile /> : <ListDesktop />}
+              </Box>
               <Footer />
             </>
           </Box>
