@@ -8,24 +8,27 @@ import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import Card from "../Card/Card";
-import { data } from "../../markdown/javascript";
+//import { data as typescript_posts } from "../../markdown/typescript";
+import { data as typescript_posts } from "../../markdown/typescript";
+import { data as javascript_posts } from "../../markdown/javascript";
+import { useRouter } from "next/router";
 
-function author(): JSX.Element {
-  return <strong>Shandyrov Askar</strong>;
-}
-function createdDate(): JSX.Element {
-  return <strong>05.05.2022</strong>;
-}
-
-function t() {
-  const m = Array.from(data).map((post, index) => <>{index}</>);
-  console.log("MK");
-  console.log(m);
-  return m;
-}
+// function t() {
+//   const m = Array.from(data).map((post, index) => <>{index}</>);
+//   console.log("MK");
+//   console.log(m);
+//   return m;
+// }
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const router = useRouter();
+
+  const routePath = "../../markdown/" + router.query.slug + "/index";
+  //const dynamicLoad = (await import("../../markdown/"+router.query.slug+"/index")).default;
+
+  console.log("routePath");
+  console.log(routePath);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -34,6 +37,18 @@ export default function SelectedListItem() {
     setSelectedIndex(index);
   };
 
+  function getPosts() {
+    switch (router.query.slug) {
+      case "typescript":
+        return typescript_posts;
+      case "javascript":
+        return javascript_posts;
+      default:
+        typescript_posts;
+    }
+    return typescript_posts;
+  }
+
   return (
     <Box sx={{ width: "100%", maxWidth: "100%" }}>
       <List
@@ -41,7 +56,7 @@ export default function SelectedListItem() {
         aria-label="main mailbox folders"
         sx={{ p: 0, m: 0, width: "100%" }}
       >
-        {Array.from(data).map((post, index) => (
+        {Array.from(getPosts()).map((post, index) => (
           // <ListItemButton children={<div>{post.description}</div>} />
           <Card
             key={index}

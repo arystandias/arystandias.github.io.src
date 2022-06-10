@@ -51,7 +51,7 @@ export default function MediaControlCard({
           component="img"
           sx={{ width: "200px", height: "200px", cursor: "pointer" }}
           image={"/languages/" + getSlug() + "/category.png"}
-          alt="Live from space album cover"
+          alt={getSlug()}
         />
       </Link>
       <Box
@@ -65,7 +65,7 @@ export default function MediaControlCard({
           <Typography
             href={"/posts/" + getSlug() + "/" + url}
             component={Link}
-            variant="h5"
+            variant="h3"
           >
             {title}
           </Typography>
@@ -97,6 +97,10 @@ export default function MediaControlCard({
                 color: "secondary",
                 border: "1px solid gray",
                 borderRadius: 0,
+                paddingLeft: 30,
+                paddingRight: 30,
+                paddingTop: 0,
+                paddingBottom: 0,
               }}
             >
               Подробнее
