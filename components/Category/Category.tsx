@@ -19,7 +19,7 @@ export default function Category() {
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  console.log(router.query);
+  //console.log(router.query);
 
   function getHeaderImage() {
     if (router.query.slug !== undefined && !isMobile) {

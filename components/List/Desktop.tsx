@@ -1,34 +1,28 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
 import Card from "../Card/Card";
-//import { data as typescript_posts } from "../../markdown/typescript";
 import { data as typescript_posts } from "../../markdown/typescript";
 import { data as javascript_posts } from "../../markdown/javascript";
 import { useRouter } from "next/router";
 
-// function t() {
-//   const m = Array.from(data).map((post, index) => <>{index}</>);
-//   console.log("MK");
-//   console.log(m);
-//   return m;
-// }
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
+import usePagination from "@mui/material/usePagination";
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const router = useRouter();
+  const [startInterval, setStartInterval] = React.useState(0);
+  const [endInterval, setEndInterval] = React.useState(5);
 
   const routePath = "../../markdown/" + router.query.slug + "/index";
   //const dynamicLoad = (await import("../../markdown/"+router.query.slug+"/index")).default;
 
-  console.log("routePath");
-  console.log(routePath);
+  const { items } = usePagination({
+    count: 5,
+  });
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -56,27 +50,32 @@ export default function SelectedListItem() {
         aria-label="main mailbox folders"
         sx={{ p: 0, m: 0, width: "100%" }}
       >
-        {Array.from(getPosts()).map((post, index) => (
-          // <ListItemButton children={<div>{post.description}</div>} />
-          <Card
-            key={index}
-            title={post.title}
-            createdDate={post.created_date}
-            author={post.author}
-            url={post.url}
-            description={post.description}
-            post={post.post}
-          />
-        ))}
+        {Array.from(getPosts())
+          .slice(startInterval, endInterval)
+          .map((post, index) => (
+            // <ListItemButton children={<div>{post.description}</div>} />
+            <Card
+              key={index}
+              title={post.title}
+              createdDate={post.created_date}
+              author={post.author}
+              url={post.url}
+              description={post.description}
+              post={post.post}
+            />
+          ))}
       </List>
+      <Stack spacing={2}>
+        <Pagination
+          count={Math.round(javascript_posts.length / 5)}
+          size="large"
+          onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+            setStartInterval((page - 1) * 5);
+            setEndInterval(page * 5);
+          }}
+        />
+      </Stack>
       <Divider />
     </Box>
   );
 }
-
-// <Card
-//   key={index}
-//   title=""
-//   createdDate={<>01.12.2022</>}
-//   author={<>Shandyrov Askar</>}
-// />
