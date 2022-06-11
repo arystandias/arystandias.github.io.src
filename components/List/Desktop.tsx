@@ -17,8 +17,14 @@ export default function SelectedListItem() {
   const [startInterval, setStartInterval] = React.useState(0);
   const [endInterval, setEndInterval] = React.useState(5);
 
-  const routePath = "../../markdown/" + router.query.slug + "/index";
-  //const dynamicLoad = (await import("../../markdown/"+router.query.slug+"/index")).default;
+  const [pageSize, setPageSize] = React.useState(5);
+
+  //const routePath = "../../markdown/" + router.query.slug + "/index";
+  async function load() {
+    const dynamicLoad = (
+      await import("../../markdown/" + router.query.slug + "/index.ts")
+    ).default;
+  }
 
   const { items } = usePagination({
     count: 5,
@@ -30,6 +36,27 @@ export default function SelectedListItem() {
   ) => {
     setSelectedIndex(index);
   };
+
+  React.useEffect(() => {
+    if (startInterval) {
+      console.log("startInterval:" + startInterval);
+    }
+  }, [startInterval]);
+
+  React.useEffect(() => {
+    if (endInterval) {
+      console.log("endInterval:" + endInterval);
+      console.log("router.query:");
+      console.log(router.query);
+    }
+  }, [endInterval]);
+
+  React.useEffect(() => {
+    console.log("--->");
+    if (router.query.slug) {
+      //setCurrent(router.query.slug);
+    }
+  }, [router.query.slug]);
 
   function getPosts() {
     switch (router.query.slug) {
@@ -65,17 +92,20 @@ export default function SelectedListItem() {
             />
           ))}
       </List>
-      <Stack spacing={2}>
+      <Divider />
+      <Stack
+        spacing={2}
+        sx={{ display: getPosts().length > pageSize ? "block" : "none" }}
+      >
         <Pagination
-          count={Math.round(javascript_posts.length / 5)}
+          count={Math.round(getPosts().length / pageSize)}
           size="large"
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
-            setStartInterval((page - 1) * 5);
-            setEndInterval(page * 5);
+            setStartInterval((page - 1) * pageSize);
+            setEndInterval(page * pageSize);
           }}
         />
-      </Stack>
-      <Divider />
+      </Stack>{" "}
     </Box>
   );
 }
