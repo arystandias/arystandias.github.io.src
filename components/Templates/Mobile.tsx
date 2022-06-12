@@ -175,7 +175,7 @@ export default function PersistentDrawerLeft({ children }: AppProps) {
             ))}
           </List>
         </Drawer>
-        <Main open={open}>
+        <Main open={open} sx={{ p: 1 }}>
           <DrawerHeader />
           {children}
         </Main>

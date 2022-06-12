@@ -37,79 +37,165 @@ function useWindowSize(): Size {
 }
 
 export default function StandardImageList() {
-  //const [w, setW] = useMediaQuery();
   const size: Size = useWindowSize();
+  const isDesktop = useMediaQuery("(min-width:600px)", { noSsr: true });
+
+  useEffect(() => {
+    if (isDesktop) {
+      console.log("isDesktop");
+    } else {
+      console.log("IS Mobile");
+    }
+  }, [isDesktop]);
 
   return (
     <ImageList sx={{ padding: 0, margin: 0 }} cols={4}>
-      {itemData.map((item, index) => (
-        <Link href={"/"}>
-          <ImageListItem key={index} style={{ cursor: "pointer" }}>
-            <img
-              data-w={size.width}
-              data-h={size.height}
-              srcSet={`${item.img}`}
-              alt={item.title}
-              loading="lazy"
-              style={{
-                height: size.height ? (size.height - 24) / 3 : 0,
-                width: size.width ? (size.width - 128) / 4 : 0,
-              }}
-            />
-          </ImageListItem>
-        </Link>
-      ))}
+      {isDesktop
+        ? itemDataDesktop.map((item, index) => (
+            <Link href={item.route} key={index}>
+              <ImageListItem style={{ cursor: "pointer" }}>
+                <img
+                  data-w={size.width}
+                  data-h={size.height}
+                  srcSet={`${item.img}`}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    height: size.height ? (size.height - 24) / 3 : 0,
+                    width: size.width ? (size.width - 128) / 4 : 0,
+                  }}
+                />
+              </ImageListItem>
+            </Link>
+          ))
+        : itemDataMobile.map((item, index) => (
+            <Link href={item.route} key={index}>
+              <ImageListItem
+                cols={2}
+                rows={2}
+                sx={{ cursor: "pointer", p: 0.1 }}
+              >
+                <img
+                  data-w={size.width}
+                  data-h={size.height}
+                  srcSet={`${item.img}`}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    padding: 0,
+                    height: size.height ? (size.height - 128) / 4 : 0,
+                    width: size.width ? (size.width - 48) / 1 : 0,
+                  }}
+                />
+              </ImageListItem>
+            </Link>
+          ))}
     </ImageList>
   );
 }
 
-const itemData = [
+const itemDataDesktop = [
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
     title: "Breakfast",
+    route: "/posts/javascript",
   },
   {
     img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
     title: "Burger",
+    route: "/posts/typescript",
   },
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
     title: "Camera",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
     title: "Coffee",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
     title: "Breakfast",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
     title: "Burger",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
     title: "Camera",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
     title: "Coffee",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
     title: "Breakfast",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
     title: "Burger",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
     title: "Camera",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
     title: "Coffee",
+    route: "/",
+  },
+];
+
+const itemDataMobile = [
+  {
+    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+    title: "Breakfast",
+    route: "/posts/javascript",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    title: "Burger",
+    route: "/posts/typescript",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    title: "Camera",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    title: "Coffee",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    title: "Camera",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    title: "Coffee",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    title: "Camera",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    title: "Coffee",
+    route: "/",
   },
 ];
