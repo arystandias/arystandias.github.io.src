@@ -33,12 +33,12 @@ function Post({ name }: any) {
     console.log("useEffext-post");
     console.log(post);
   }, [post]);
-  return <ReactMarkdown children={post} />;
+  return <ReactMarkdown>{post}</ReactMarkdown>;
 }
 
-Post.getInitialProps = async () => {
-  console.log("getInitialProps");
-  return {};
-};
+// Post.getInitialProps = async () => {
+//   console.log("getInitialProps");
+//   return {};
+// };
 
 export default Post;
