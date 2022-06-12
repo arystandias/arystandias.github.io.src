@@ -53,7 +53,7 @@ export default function StandardImageList() {
               loading="lazy"
               style={{
                 height: size.height ? size.height / 3 : 0,
-                width: size.width ? (size.width - 96) / 4 : 0,
+                width: size.width ? (size.width - 94) / 4 : 0,
               }}
             />
           </ImageListItem>
