@@ -26,7 +26,7 @@ export default function Category() {
       return "/languages/" + router.query.slug + "/desktop.png";
     }
     if (router.query.slug !== undefined && isMobile) {
-      return "/languages/" + router.query.slug + "/mobile.png";
+      return "/languages/" + router.query.slug + "/mobile_post_header.png";
     }
     return undefined;
   }
