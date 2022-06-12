@@ -4,7 +4,7 @@ export const data = [
    {
       title: 'Асинхронный JavaScript 1',
       description: 'Обсуждение асинхронного JavaScript: почему это так важно, как эта возможность языка может использована для обработки потенциальных блокирующих операций, как, например получение данных с сервера.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '01.012022',
       author: 'shandyrov askar',
       post: '/posts/javascript/intro-1',
