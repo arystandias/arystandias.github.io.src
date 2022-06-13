@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 function Post({ name }: any) {
-  console.log("name: " + name);
-
   const router = useRouter();
   const [post, setPost] = useState("");
 
@@ -35,10 +33,4 @@ function Post({ name }: any) {
   }, [post]);
   return <ReactMarkdown>{post}</ReactMarkdown>;
 }
-
-// Post.getInitialProps = async () => {
-//   console.log("getInitialProps");
-//   return {};
-// };
-
 export default Post;
