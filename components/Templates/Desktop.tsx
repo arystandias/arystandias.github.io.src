@@ -25,12 +25,17 @@ import HomeIcon from "@mui/icons-material/Home";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import ArticleIcon from "@mui/icons-material/Article";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import { useRouter } from "next/router";
 // import BottomNavigation from "@mui/material/BottomNavigation";
 // import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 // import FolderIcon from "@mui/icons-material/Folder";
 // import RestoreIcon from "@mui/icons-material/Restore";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
+
+interface ListItemClickInterface {
+  index: number;
+}
 
 const drawerWidth = 200;
 
@@ -116,6 +121,7 @@ export default function MiniDrawer({ children }: AppProps) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState(0);
+  const router = useRouter();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,6 +129,30 @@ export default function MiniDrawer({ children }: AppProps) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  /**
+   * Обработчик нажатия на пункт меню
+   * @param param0
+   */
+  const handleListItemClick = ({ index }: ListItemClickInterface) => {
+    setSelected(index);
+    switch (index) {
+      case 0:
+        router.push("/");
+        break;
+      case 1:
+        router.push("/news");
+        break;
+      case 2:
+        router.push("/posts");
+        break;
+      case 3:
+        router.push("/contacts");
+        break;
+      default:
+        router.push("/");
+    }
   };
 
   return (
@@ -161,7 +191,7 @@ export default function MiniDrawer({ children }: AppProps) {
                 disablePadding
                 sx={{ display: "block" }}
                 selected={index === selected}
-                onClick={() => setSelected(index)}
+                onClick={() => handleListItemClick({ index })}
               >
                 <ListItemButton
                   sx={{
