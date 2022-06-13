@@ -10,6 +10,12 @@ interface Size {
   height: number | undefined;
 }
 
+interface MobileImage {
+  image: string;
+  title: string;
+  route: string;
+}
+
 function useWindowSize(): Size {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
@@ -84,7 +90,7 @@ export default function StandardImageList() {
                   style={{
                     padding: 0,
                     height: size.height ? (size.height - 128) / 4 : 0,
-                    width: size.width ? (size.width - 48) / 1 : 0,
+                    width: size.width ? (size.width - 24) / 2 : 0,
                   }}
                 />
               </ImageListItem>
@@ -96,14 +102,14 @@ export default function StandardImageList() {
 
 const itemDataDesktop = [
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
     title: "Breakfast",
     route: "/posts/javascript",
+    img: "/languages/javascript/category.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
+    title: "typescript",
     route: "/posts/typescript",
+    img: "/languages/typescript/category.png",
   },
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
@@ -159,9 +165,9 @@ const itemDataDesktop = [
 
 const itemDataMobile = [
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
     title: "Breakfast",
     route: "/posts/javascript",
+    img: "/languages/javascript/mobile.png",
   },
   {
     img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
