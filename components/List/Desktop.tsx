@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
 import usePagination from "@mui/material/usePagination";
+import AppProps from "../../interfaces/AppProps";
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -65,7 +66,7 @@ export default function SelectedListItem() {
       case "javascript":
         return javascript_posts;
       default:
-        typescript_posts;
+        return typescript_posts;
     }
     return typescript_posts;
   }

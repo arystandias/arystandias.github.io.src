@@ -13,15 +13,16 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import NextLink from "../Link/Link";
+import CardInterface from "../../components/Card/CardInterface";
 
-interface CardInterface {
-  author: string;
-  createdDate: string;
-  title: string;
-  url: string;
-  description: string;
-  post: string;
-}
+// interface CardInterface {
+//   author: string;
+//   createdDate: string;
+//   title: string;
+//   url: string;
+//   description: string;
+//   post: string;
+// }
 
 export default function MediaControlCard({
   author,
@@ -30,14 +31,21 @@ export default function MediaControlCard({
   url,
   description,
   post,
+  image,
 }: CardInterface) {
   const theme = useTheme();
   const router = useRouter();
-  console.log("outer----");
-  console.log(router.query.slug);
 
-  function getSlug(): string {
-    return router.query.slug as string;
+  function getSlug(): string | null {
+    if (router.query.slug) {
+      return router.query.slug as string;
+    } else {
+      return null;
+    }
+  }
+
+  function getAlt(): string {
+    return (router.query.slug as string) || title;
   }
 
   function getPostName(): string {
@@ -50,8 +58,8 @@ export default function MediaControlCard({
         <CardMedia
           component="img"
           sx={{ width: "200px", height: "200px", cursor: "pointer" }}
-          image={"/languages/" + getSlug() + "/category.png"}
-          alt={getSlug()}
+          image={getSlug() ? "/posts/" + getSlug() + "/logo.png" : image}
+          alt={getAlt()}
         />
       </Link>
       <Box

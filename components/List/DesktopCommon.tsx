@@ -16,7 +16,6 @@ import AppProps from "../../interfaces/AppProps";
 //import ListMobile from "../../components/List/MobileCommon";
 
 export default function SelectedListItem() {
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
   const router = useRouter();
   const [startInterval, setStartInterval] = React.useState(0);
   const [endInterval, setEndInterval] = React.useState(5);
@@ -86,6 +85,7 @@ export default function SelectedListItem() {
             url={post.url}
             description={post.description}
             post={post.post}
+            image={post.image}
           />
         ))}
       </List>
