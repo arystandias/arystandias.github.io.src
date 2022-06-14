@@ -13,7 +13,7 @@ export const data = [
    {
       title: 'Введение в объекты JavaScript 2',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -22,7 +22,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 3',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -31,7 +31,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 4',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -40,7 +40,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 5',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -49,7 +49,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 6',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -58,7 +58,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 7',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -67,7 +67,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 8',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -76,7 +76,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 9',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -85,7 +85,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 10',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -94,7 +94,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 11',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -112,7 +112,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 13',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -121,7 +121,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 14',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -130,7 +130,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 15',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -139,7 +139,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 16',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -148,7 +148,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 17',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -157,7 +157,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 18 ',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -166,7 +166,7 @@ export const data = [
          {
       title: 'Введение в объекты JavaScript 19',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
@@ -175,7 +175,7 @@ export const data = [
       {
       title: 'Введение в объекты JavaScript 20',
       description: 'Объектно-ориентированная природа JavaScript важна для понимания, если вы хотите углубить знание языка и писать более эффективный код. Поэтому мы подготовили модуль, который поможет вам в этом.',
-      image: '/javascript/logo.png',
+      image: '/posts/javascript/logo.png',
       created_date: '02.012022',
       author: 'ahandyrov askar',
       post: '/posts/javascript/intro-2',
