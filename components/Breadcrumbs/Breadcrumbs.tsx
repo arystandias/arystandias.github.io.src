@@ -10,7 +10,10 @@ import Link from "next/link";
 function IconBreadcrumbs(): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(slug);
+  const { route } = router;
+
+  console.log("router:");
+  console.log(router);
 
   //function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
   //  event.preventDefault();
