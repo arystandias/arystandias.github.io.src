@@ -3,4 +3,5 @@ import { ReactNode } from "react";
 
 export default interface AppProps {
   children: ReactNode;
+  component?:string;
 }
