@@ -131,18 +131,23 @@ export default function MiniDrawer({ children }: AppProps) {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    var i: SelectedIndex = { index: getSelectedIndex() };
+    setSelectedIndex(i);
+  }, []);
   /**
    * Обработчик нажатия на пункт меню
    * @param param0
    */
-  const handleListItemClick = ({ index }: ListItemClickInterface) => {
-    setSelected(index);
+  const handleListItemClick = ({ index }: SelectedIndex) => {
+    setSelectedIndex({ index });
     switch (index) {
       case 0:
         router.push("/");
         break;
       case 1:
         router.push("/news");
+
         break;
       case 2:
         router.push("/posts");
@@ -154,6 +159,39 @@ export default function MiniDrawer({ children }: AppProps) {
         router.push("/");
     }
   };
+
+  interface SelectedIndex {
+    index: number;
+  }
+
+  function getSelectedIndex() {
+    console.log("router.route:");
+    console.log(router.route);
+
+    switch (router.route) {
+      case "/":
+        return 0;
+      case "/news":
+        return 1;
+      case "/posts":
+        return 2;
+      case "/contacts":
+        return 3;
+    }
+
+    return -1;
+  }
+
+  function setSelectedIndex({ index }: SelectedIndex) {
+    try {
+      var i = "" + index;
+      localStorage.removeItem("selected-index");
+      localStorage.setItem("selected-index", i);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -190,8 +228,12 @@ export default function MiniDrawer({ children }: AppProps) {
                 key={index}
                 disablePadding
                 sx={{ display: "block" }}
-                selected={index === selected}
-                onClick={() => handleListItemClick({ index })}
+                selected={index === getSelectedIndex()}
+                onClick={() => {
+                  handleListItemClick({ index });
+                  console.log("index1: ");
+                  console.log(index);
+                }}
               >
                 <ListItemButton
                   sx={{
