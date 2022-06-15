@@ -8,6 +8,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ListDesktop from "../components/List/DesktopCommon";
 import ListMobile from "../components/List/MobileCommon";
 import Footer from "../components/Footer/Footer";
+import TabPanel from '../components/TabPanel/TabPanel';
 
 export default function News() {
   //const [theme, setTheme] = useState('dark');
@@ -45,7 +46,7 @@ export default function News() {
             <>
               <Breadcrumbs />
               <Box sx={{ p: 4, minHeight: "80vh" }}>
-                {isMobile ? <ListMobile /> : <ListDesktop />}
+                <TabPanel/>
               </Box>
               <Footer />
             </>

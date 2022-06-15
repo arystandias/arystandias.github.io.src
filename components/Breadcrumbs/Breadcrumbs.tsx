@@ -22,10 +22,24 @@ function IconBreadcrumbs(): JSX.Element {
   //  router.push('/contacts');
   //}
   // onClick={(e) => router.push(slug?.toString())}
+
+  function getRouteName(): string | null {
+    switch (router.route.substring(1)) {
+      case "contacts":
+        return "Контакты";
+      case "news":
+        return "Новости";
+      case "posts":
+        return "Статьи";
+      default:
+        return "" + slug;
+    }
+  }
+
   return (
     <div role="presentation">
       <Breadcrumbs aria-label="breadcrumb">
-        <Link color="inherit" href={"/"} style={{ cursor: "pointer" }}>
+        <Link color="text.primary" href={"/"} style={{ cursor: "pointer" }}>
           <a>
             <HomeIcon sx={{ mr: 0.5, ml: 2, pb: 0 }} fontSize="inherit" />{" "}
             Главная
@@ -36,7 +50,7 @@ function IconBreadcrumbs(): JSX.Element {
           sx={{ display: "flex", alignItems: "center" }}
           color="text.primary"
         >
-          {slug}
+          {getRouteName()}
         </Typography>
       </Breadcrumbs>
     </div>
