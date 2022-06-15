@@ -90,6 +90,7 @@ export default function SelectedListItem() {
               url={post.url}
               description={post.description}
               post={post.post}
+              image={"/"}
             />
           ))}
       </List>
