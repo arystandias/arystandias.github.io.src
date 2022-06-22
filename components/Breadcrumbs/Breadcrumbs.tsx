@@ -31,6 +31,8 @@ function IconBreadcrumbs(): JSX.Element {
         return "Новости";
       case "posts":
         return "Статьи";
+      case "notes":
+        return "Заметки";
       default:
         return "" + slug;
     }
