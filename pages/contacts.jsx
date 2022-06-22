@@ -46,7 +46,7 @@ export default function News() {
             <>
               <Breadcrumbs />
               <Box sx={{ p: 4, minHeight: "80vh" }}>
-                <TabPanel/>
+                
               </Box>
               <Footer />
             </>
