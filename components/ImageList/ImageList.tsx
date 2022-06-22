@@ -55,7 +55,7 @@ export default function StandardImageList() {
   }, [isDesktop]);
 
   return (
-    <ImageList sx={{ padding: 0, margin: 0 }} cols={4}>
+    <ImageList sx={{ padding: 0, margin: 0 }} cols={5}>
       {isDesktop
         ? itemDataDesktop.map((item, index) => (
             <Link href={item.route} key={index}>
@@ -67,8 +67,10 @@ export default function StandardImageList() {
                   alt={item.title}
                   loading="lazy"
                   style={{
-                    height: size.height ? (size.height - 24) / 3 : 0,
-                    width: size.width ? (size.width - 128) / 4 : 0,
+                    //height: size.height ? (size.height - 24) / 3 : 0,
+                    //width: size.width ? (size.width - 128) / 4 : 0,
+                    height: size.height ? 305 : 0,
+                    width: size.width ? 358 : 0,
                   }}
                 />
               </ImageListItem>
@@ -104,12 +106,32 @@ const itemDataDesktop = [
   {
     title: "Breakfast",
     route: "/posts/javascript",
-    img: "/languages/javascript/category.png",
+    img: "/posts/javascript/logo.png",
   },
   {
     title: "typescript",
     route: "/posts/typescript",
-    img: "/languages/typescript/category.png",
+    img: "posts/typescript/logo.png",
+  },
+  {
+    title: "Docker",
+    route: "/posts/docker",
+    img: "/posts/docker/logo.png",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    title: "Coffee",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+    title: "Breakfast",
+    route: "/",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    title: "Burger",
+    route: "/",
   },
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
@@ -154,11 +176,6 @@ const itemDataDesktop = [
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
     title: "Camera",
-    route: "/",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
     route: "/",
   },
 ];
