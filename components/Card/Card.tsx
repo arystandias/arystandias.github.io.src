@@ -14,6 +14,7 @@ import Link from "next/link";
 import Button from "@mui/material/Button";
 import NextLink from "../Link/Link";
 import CardInterface from "../../components/Card/CardInterface";
+import Rating from "@mui/material/Rating";
 
 // interface CardInterface {
 //   author: string;
@@ -37,6 +38,9 @@ export default function MediaControlCard({
   const router = useRouter();
 
   function getSlug(): string | null {
+    console.log("router.query:");
+    console.log(router.query);
+
     if (router.query.slug) {
       return router.query.slug as string;
     } else {
@@ -54,7 +58,7 @@ export default function MediaControlCard({
 
   return (
     <Card sx={{ display: "flex", width: "100%", height: "200px", mb: "10px" }}>
-      <Link href={"/posts/" + getSlug() + "/" + url}>
+      <Link href={getSlug() ? "/posts/" + getSlug() + "/" + url : url}>
         <CardMedia
           component="img"
           sx={{ width: "200px", height: "200px", cursor: "pointer" }}
@@ -97,7 +101,7 @@ export default function MediaControlCard({
             height: "30%",
           }}
         >
-          <Link href={"/posts/" + getSlug() + "/" + url}>
+          {/* <Link href={"/posts/" + getSlug() + "/" + url}>
             <IconButton
               size="small"
               style={{
@@ -113,7 +117,7 @@ export default function MediaControlCard({
             >
               Подробнее
             </IconButton>
-          </Link>
+          </Link> */}
         </Box>
       </Box>
     </Card>
