@@ -5,8 +5,8 @@ import { grey } from "@mui/material/colors";
 import { useRouter } from "next/router";
 
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
-import ListDesktop from "../components/List/DesktopCommon";
-import ListMobile from "../components/List/MobileCommon";
+import ListDesktop from "../components/List/DesktopNews";
+import ListMobile from "../components/List/MobileNews";
 import Footer from "../components/Footer/Footer";
 
 export default function News() {

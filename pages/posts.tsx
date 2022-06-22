@@ -5,8 +5,8 @@ import { grey } from "@mui/material/colors";
 import { useRouter } from "next/router";
 
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
-import ListDesktop from "../components/List/DesktopCommon";
-import ListMobile from "../components/List/MobileCommon";
+import PostsDesktop from "../components/Posts/Desktop";
+import PostsMobile from "../components/Posts/Mobile";
 import Footer from "../components/Footer/Footer";
 
 export default function Category() {
@@ -45,7 +45,7 @@ export default function Category() {
             <>
               <Breadcrumbs />
               <Box sx={{ p: 4, minHeight: "80vh" }}>
-                {isMobile ? <ListMobile /> : <ListDesktop />}
+                {isMobile ? <PostsMobile /> : <PostsDesktop />}
               </Box>
               <Footer />
             </>
