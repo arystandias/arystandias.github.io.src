@@ -26,12 +26,27 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import ArticleIcon from "@mui/icons-material/Article";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import { useRouter } from "next/router";
+import Tooltip from "@mui/material/Tooltip";
 // import BottomNavigation from "@mui/material/BottomNavigation";
 // import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 // import FolderIcon from "@mui/icons-material/Folder";
 // import RestoreIcon from "@mui/icons-material/Restore";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
 
 interface ListItemClickInterface {
   index: number;
@@ -153,6 +168,9 @@ export default function MiniDrawer({ children }: AppProps) {
         router.push("/posts");
         break;
       case 3:
+        router.push("/notes");
+        break;
+      case 4:
         router.push("/contacts");
         break;
       default:
@@ -175,11 +193,13 @@ export default function MiniDrawer({ children }: AppProps) {
         return 1;
       case "/posts":
         return 2;
-      case "/contacts":
+      case "/notes":
         return 3;
+      case "/contacts":
+        return 4;
+      default:
+        return 0;
     }
-
-    return -1;
   }
 
   function setSelectedIndex({ index }: SelectedIndex) {
@@ -217,6 +237,7 @@ export default function MiniDrawer({ children }: AppProps) {
             {[
               { title: "Главная", icon: <HomeIcon />, path: "/" },
               { title: "Новости", icon: <NewspaperIcon />, path: "/news" },
+              { title: "Статьи", icon: <ArticleIcon />, path: "/posts" },
               { title: "Заметки", icon: <ArticleIcon />, path: "/notes" },
               {
                 title: "Контакты",
@@ -224,39 +245,46 @@ export default function MiniDrawer({ children }: AppProps) {
                 path: "/contacts",
               },
             ].map((item, index) => (
-              <ListItem
+              <Tooltip
                 key={index}
-                disablePadding
-                sx={{ display: "block" }}
-                selected={index === getSelectedIndex()}
-                onClick={() => {
-                  handleListItemClick({ index });
-                  console.log("index1: ");
-                  console.log(index);
-                }}
+                title={item.title}
+                placement="right-end"
+                color={"red"}
               >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
+                <ListItem
+                  key={index}
+                  disablePadding
+                  sx={{ display: "block" }}
+                  selected={index === getSelectedIndex()}
+                  onClick={() => {
+                    handleListItemClick({ index });
+                    console.log("index1: ");
+                    console.log(index);
                   }}
                 >
-                  <ListItemIcon
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.title}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.title}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Tooltip>
             ))}
           </List>
           <Divider />
