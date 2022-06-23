@@ -1,41 +1,74 @@
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { red, grey } from "@mui/material/colors";
 import { useRouter } from "next/router";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import JavascriptIntroduction from "../../posts/javascript/introduction.md";
-import TypescriptIntroduction from "../../posts/typescript/introduction.md";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import ListDesktop from "../../components/List/Desktop";
+import ListMobile from "../../components/List/Mobile";
+import Footer from "../../components/Footer/Footer";
 
-import Array from "../../posts/javascript/Array.md";
-import ReactMarkdown from "react-markdown";
-import { useEffect, useRef, useState } from "react";
-import { ParsedUrlQuery } from "querystring";
-import Category from "../../components/Category/Category";
+//import ListItem from '../ListItem/ListItemDesktop';
 
-export default function Slug() {
+interface CategoryInterface {
+  slug: string;
+}
+
+export default function Category({ slug }: CategoryInterface) {
+  //const [theme, setTheme] = useState('dark');
+  const theme = useTheme();
   const router = useRouter();
-  const [markdown, setMarkdown] = useState("");
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  //const [query, setQuery] = useState<ParsedUrlQuery>(router.query);
+  //console.log(router.query);
 
-  //const ref = useRef();
+  console.log("---===SLUG===---");
+  console.log(slug);
 
-  //var items: String[] = [];
+  function getHeaderImage() {
+    if (router.query.slug !== undefined && !isMobile) {
+      return "/languages/" + router.query.slug + "/desktop.png";
+    }
+    if (router.query.slug !== undefined && isMobile) {
+      return "/languages/" + router.query.slug + "/mobile_post_header.png";
+    }
+    return undefined;
+  }
 
-  // useEffect(() => {
-  //   if (router.isReady) {
-  //     console.log('isReady');
-  //     console.log(router.query);
-
-  //     if (router.query && router.query.slug === 'javascript') {
-  //       setMarkdown(JavascriptIntroduction);
-  //     }
-  //     if (router.query && router.query.slug === 'typescript') {
-  //       setMarkdown(TypescriptIntroduction);
-  //     }
-
-  //     console.log('slug: '+router.query.slug);
-  //   }
-  // }, [router.isReady]);                                                                                                                                           ]);
-
-  //return <ReactMarkdown>{markdown}</ReactMarkdown>
-  console.log("OK1");
-  return <Category />;
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="xl">
+        <Box
+          sx={{ height: "auto" }}
+          style={{
+            backgroundColor:
+              theme.palette.mode === "dark" ? grey[900] : grey[300],
+          }}
+        >
+          <img
+            src={getHeaderImage()}
+            width={"100%"}
+            height={150}
+            //srcSet={`${item.img}`}
+            alt={"header_image"}
+            loading="lazy"
+          />
+          <Box sx={{ p: 0 }}>
+            <>
+              <Breadcrumbs />
+              <Box sx={{ p: 4, minHeight: "80vh" }}>
+                {isMobile ? <ListMobile /> : <ListDesktop />}
+              </Box>
+              <Footer />
+            </>
+          </Box>
+        </Box>
+      </Container>
+    </React.Fragment>
+  );
 }
