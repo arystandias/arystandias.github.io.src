@@ -33,6 +33,8 @@ function IconBreadcrumbs(): JSX.Element {
         return "Статьи";
       case "notes":
         return "Заметки";
+      case "category":
+        return "Категории";
       default:
         return "" + slug;
     }
