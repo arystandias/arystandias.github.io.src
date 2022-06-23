@@ -13,13 +13,20 @@ import Footer from "../Footer/Footer";
 
 //import ListItem from '../ListItem/ListItemDesktop';
 
-export default function Category() {
+interface CategoryInterface {
+  slug: string;
+}
+
+export default function Category({ slug }: CategoryInterface) {
   //const [theme, setTheme] = useState('dark');
   const theme = useTheme();
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   //console.log(router.query);
+
+  console.log("---===SLUG===---");
+  console.log(slug);
 
   function getHeaderImage() {
     if (router.query.slug !== undefined && !isMobile) {
