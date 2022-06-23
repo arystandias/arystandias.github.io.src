@@ -27,6 +27,8 @@ import ArticleIcon from "@mui/icons-material/Article";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import { useRouter } from "next/router";
 import Tooltip from "@mui/material/Tooltip";
+import AppsIcon from "@mui/icons-material/Apps";
+import EventNoteIcon from "@mui/icons-material/EventNote";
 // import BottomNavigation from "@mui/material/BottomNavigation";
 // import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 // import FolderIcon from "@mui/icons-material/Folder";
@@ -162,15 +164,16 @@ export default function MiniDrawer({ children }: AppProps) {
         break;
       case 1:
         router.push("/news");
-
         break;
       case 2:
-        router.push("/posts");
+        router.push("/category");
         break;
       case 3:
-        router.push("/notes");
+        router.push("/posts");
         break;
       case 4:
+        router.push("/notes");
+      case 5:
         router.push("/contacts");
         break;
       default:
@@ -183,20 +186,19 @@ export default function MiniDrawer({ children }: AppProps) {
   }
 
   function getSelectedIndex() {
-    console.log("router.route:");
-    console.log(router.route);
-
     switch (router.route) {
       case "/":
         return 0;
       case "/news":
         return 1;
-      case "/posts":
+      case "/category":
         return 2;
-      case "/notes":
+      case "/posts":
         return 3;
-      case "/contacts":
+      case "/notes":
         return 4;
+      case "/contacts":
+        return 5;
       default:
         return 0;
     }
@@ -237,8 +239,10 @@ export default function MiniDrawer({ children }: AppProps) {
             {[
               { title: "Главная", icon: <HomeIcon />, path: "/" },
               { title: "Новости", icon: <NewspaperIcon />, path: "/news" },
+              { title: "Категории", icon: <AppsIcon />, path: "/category" },
               { title: "Статьи", icon: <ArticleIcon />, path: "/posts" },
-              { title: "Заметки", icon: <ArticleIcon />, path: "/notes" },
+              { title: "Заметки", icon: <EventNoteIcon />, path: "/notes" },
+
               {
                 title: "Контакты",
                 icon: <AlternateEmailIcon />,

@@ -3,14 +3,16 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Card from "../Card/Card";
-import { data as typescript_posts } from "../../markdown/typescript";
-import { data as javascript_posts } from "../../markdown/javascript";
 import { useRouter } from "next/router";
 
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
 import usePagination from "@mui/material/usePagination";
 import AppProps from "../../interfaces/AppProps";
+
+import { data as typescript_posts } from "../../markdown/typescript";
+import { data as javascript_posts } from "../../markdown/javascript";
+import { data as docker_posts } from "../../markdown/docker";
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -46,14 +48,14 @@ export default function SelectedListItem() {
 
   React.useEffect(() => {
     if (endInterval) {
-      console.log("endInterval:" + endInterval);
-      console.log("router.query:");
-      console.log(router.query);
+      //console.log("endInterval:" + endInterval);
+      //console.log("router.query:");
+      //console.log(router.query);
     }
   }, [endInterval]);
 
   React.useEffect(() => {
-    console.log("--->");
+    //console.log("--->");
     if (router.query.slug) {
       //setCurrent(router.query.slug);
     }
@@ -65,10 +67,10 @@ export default function SelectedListItem() {
         return typescript_posts;
       case "javascript":
         return javascript_posts;
-      default:
-        return typescript_posts;
+      case "docker":
+        return docker_posts;
     }
-    return typescript_posts;
+    return javascript_posts;
   }
 
   return (

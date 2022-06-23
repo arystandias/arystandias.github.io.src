@@ -3,17 +3,22 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Card from "../Card/Card";
-import { data as typescript_posts } from "../../markdown/typescript";
-import { data as javascript_posts } from "../../markdown/javascript";
 import { useRouter } from "next/router";
 
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
 import usePagination from "@mui/material/usePagination";
 import AppProps from "../../interfaces/AppProps";
-
+import PostInterface from "../../interfaces/Post";
 //import ListDesktop from "../../components/List/DesktopCommon";
 //import ListMobile from "../../components/List/MobileCommon";
+import { data as typescript_posts } from "../../markdown/typescript";
+import { data as javascript_posts } from "../../markdown/javascript";
+import { data as docker_posts } from "../../markdown/docker";
+
+type a = {
+  items: number[];
+};
 
 export default function SelectedListItem() {
   const router = useRouter();
@@ -21,9 +26,7 @@ export default function SelectedListItem() {
   const [endInterval, setEndInterval] = React.useState(5);
 
   const [pageSize, setPageSize] = React.useState(5);
-  const [posts, setPosts] = React.useState(
-    javascript_posts.concat(typescript_posts)
-  );
+  const [posts, setPosts] = React.useState<PostInterface[]>([]);
 
   //const routePath = "../../markdown/" + router.query.slug + "/index";
   async function load() {
@@ -50,8 +53,16 @@ export default function SelectedListItem() {
   }, [startInterval]);
 
   React.useEffect(() => {
-    console.log("USE Effect:");
-    console.log(typescript_posts);
+    var ps = javascript_posts
+      .concat(typescript_posts)
+      .concat(docker_posts)
+      .sort((a, b) => {
+        var first: number = Date.parse(a.created_date);
+        var second: number = Date.parse(b.created_date);
+        return second - first;
+      });
+
+    setPosts(ps);
   }, []);
 
   React.useEffect(() => {
@@ -103,24 +114,3 @@ export default function SelectedListItem() {
     </Box>
   );
 }
-// {
-//   /* {Array.from()
-//   //.slice(startInterval, endInterval)
-//   .map(
-//     (
-//       post,
-//       index //"" + console.log(posts.posts)
-//     ) => (
-//       // <ListItemButton children={<div>{post.description}</div>} />
-//       <Card
-//         key={index}
-//         title={post.posts[0].title}
-//         createdDate={post.posts[0].created_date}
-//         author={post.posts[0].author}
-//         url={post.posts[0].url}
-//         description={post.posts[0].description}
-//         post={post.posts[0].post}
-//       />
-//     )
-//   )} */
-// }
