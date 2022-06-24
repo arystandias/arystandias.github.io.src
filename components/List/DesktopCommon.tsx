@@ -15,6 +15,7 @@ import PostInterface from "../../interfaces/Post";
 import { data as typescript_posts } from "../../markdown/typescript";
 import { data as javascript_posts } from "../../markdown/javascript";
 import { data as docker_posts } from "../../markdown/docker";
+import { data as mysql_posts } from "../../markdown/mysql";
 
 type a = {
   items: number[];
@@ -56,6 +57,7 @@ export default function SelectedListItem() {
     var ps = javascript_posts
       .concat(typescript_posts)
       .concat(docker_posts)
+      .concat(mysql_posts)
       .sort((a, b) => {
         var first: number = Date.parse(a.created_date);
         var second: number = Date.parse(b.created_date);
