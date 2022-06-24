@@ -104,12 +104,12 @@ export default function StandardImageList() {
 
 const itemDataDesktop = [
   {
-    title: "Breakfast",
+    title: "JavaScript",
     route: "/posts/javascript",
     img: "/posts/javascript/logo.png",
   },
   {
-    title: "typescript",
+    title: "TypeScript",
     route: "/posts/typescript",
     img: "posts/typescript/logo.png",
   },
@@ -119,14 +119,14 @@ const itemDataDesktop = [
     img: "/posts/docker/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    route: "/",
+    title: "Bash",
+    route: "/posts/bash/",
+    img: "/posts/bash/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-    route: "/",
+    title: "MySQL",
+    route: "/posts/mysql",
+    img: "/posts/mysql/logo.png",
   },
   {
     img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",

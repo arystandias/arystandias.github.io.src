@@ -13,6 +13,7 @@ import AppProps from "../../interfaces/AppProps";
 import { data as typescript_posts } from "../../markdown/typescript";
 import { data as javascript_posts } from "../../markdown/javascript";
 import { data as docker_posts } from "../../markdown/docker";
+import { data as mysql_posts } from "../../markdown/mysql";
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -69,6 +70,8 @@ export default function SelectedListItem() {
         return javascript_posts;
       case "docker":
         return docker_posts;
+      case "mysql":
+        return mysql_posts;
     }
     return javascript_posts;
   }
