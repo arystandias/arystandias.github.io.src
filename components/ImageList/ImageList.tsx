@@ -129,39 +129,19 @@ const itemDataDesktop = [
     img: "/posts/mysql/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-    route: "/",
+    title: "React",
+    route: "/posts/react",
+    img: "/posts/react/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    route: "/",
+    title: "php",
+    route: "/posts/php",
+    img: "/posts/php/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    route: "/",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-    route: "/",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-    route: "/",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    route: "/",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    route: "/",
+    title: "kubernetes",
+    route: "/posts/kubernetes",
+    img: "/posts/kubernetes/logo.png",
   },
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
@@ -169,14 +149,34 @@ const itemDataDesktop = [
     route: "/",
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-    route: "/",
+    title: "node_js",
+    route: "/posts/node_js",
+    img: "/posts/node_js/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    route: "/",
+    title: "yii",
+    route: "/posts/yii",
+    img: "/posts/yii/logo.png",
+  },
+  {
+    img: "/posts/golang/logo.png",
+    title: "golang",
+    route: "/posts/golang/logo.png",
+  },
+  {
+    img: "/posts/html5/logo.png",
+    title: "html5",
+    route: "/posts/html5",
+  },
+  {
+    img: "/posts/redis/logo.png",
+    title: "redis",
+    route: "/posts/redis",
+  },
+  {
+    title: "1C",
+    route: "/posts/1c",
+    img: "/posts/1c/logo.png",
   },
 ];
 
