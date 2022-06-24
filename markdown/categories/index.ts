@@ -29,10 +29,25 @@ export const data = [
       created_date: '02.01.2022',
       author: 'shandyrov askar',
    },
+
+   {
+      title: 'php',
+      description: '',
+      image: '/posts/php/logo.png',
+      created_date: '02.01.2022',
+      author: 'shandyrov askar',
+   },
    {
       title: 'Docker',
       description: '',
       image: '/posts/docker/logo.png',
+      created_date: '02.01.2022',
+      author: 'shandyrov askar',
+   },
+   {
+      title: 'kubernetes',
+      description: '',
+      image: '/posts/kubernetes/logo.png',
       created_date: '02.01.2022',
       author: 'shandyrov askar',
    }
