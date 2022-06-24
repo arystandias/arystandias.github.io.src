@@ -4,6 +4,14 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { useState, useEffect } from "react";
 import { useMediaQuery } from "@mui/material";
 import Link from "next/link";
+import Image from "next/image";
+
+import javascript from "../../public/posts/javascript/logo.png";
+import typescipt from "../../public/posts/typescipt/logo.png";
+import docker from "../../public/posts/docker/logo.png";
+import bash from "../../public/posts/bash/logo.png";
+import react from "../../public/posts/react/logo.png";
+import mysql from "../../public/posts/mysql/logo.png";
 
 interface Size {
   width: number | undefined;
@@ -60,6 +68,15 @@ export default function StandardImageList() {
         ? itemDataDesktop.map((item, index) => (
             <Link href={item.route} key={index}>
               <ImageListItem style={{ cursor: "pointer" }}>
+                {/* <Image
+                  src={`${item.img}`}
+                  alt={item.title}
+                  height={size.height ? 305 : 0}
+                  width={size.width ? 358 : 0}
+                  //layout="responsive"
+                
+                  loading="lazy"
+                /> */}
                 <img
                   data-w={size.width}
                   data-h={size.height}
@@ -67,8 +84,6 @@ export default function StandardImageList() {
                   alt={item.title}
                   loading="lazy"
                   style={{
-                    //height: size.height ? (size.height - 24) / 3 : 0,
-                    //width: size.width ? (size.width - 128) / 4 : 0,
                     height: size.height ? 305 : 0,
                     width: size.width ? 358 : 0,
                   }}
@@ -144,9 +159,9 @@ const itemDataDesktop = [
     img: "/posts/kubernetes/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-    route: "/",
+    img: "/posts/c_sharp/logo.png",
+    title: "c#",
+    route: "/posts/c_sharp",
   },
   {
     title: "node_js",

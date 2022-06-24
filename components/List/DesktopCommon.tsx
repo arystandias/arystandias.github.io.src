@@ -17,6 +17,7 @@ import { data as javascript_posts } from "../../markdown/javascript";
 import { data as docker_posts } from "../../markdown/docker";
 import { data as mysql_posts } from "../../markdown/mysql";
 import { data as kubernetes_posts } from "../../markdown/kubernetes";
+import { data as flutter_posts } from "../../markdown/flutter";
 
 type a = {
   items: number[];
@@ -60,6 +61,7 @@ export default function SelectedListItem() {
       .concat(docker_posts)
       .concat(mysql_posts)
       .concat(kubernetes_posts)
+      .concat(flutter_posts)
       .sort((a, b) => {
         var first: number = Date.parse(a.created_date);
         var second: number = Date.parse(b.created_date);

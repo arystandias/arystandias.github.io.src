@@ -57,5 +57,12 @@ export const data = [
       image: '/posts/kubernetes/logo.png',
       created_date: '02.01.2022',
       author: 'shandyrov askar',
+   },
+   {
+      title: 'flutter',
+      description: '',
+      image: '/posts/flutter/logo.png',
+      created_date: '02.01.2022',
+      author: 'shandyrov askar',
    }
 ]; 
