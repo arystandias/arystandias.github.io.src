@@ -51,7 +51,6 @@ export default function SelectedListItem() {
     if (endInterval) {
       //console.log("endInterval:" + endInterval);
       //console.log("router.query:");
-      //console.log(router.query);
     }
   }, [endInterval]);
 
