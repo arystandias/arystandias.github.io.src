@@ -38,6 +38,13 @@ export const data = [
       author: 'shandyrov askar',
    },
    {
+      title: 'react',
+      description: '',
+      image: '/posts/react/logo.png',
+      created_date: '02.01.2022',
+      author: 'shandyrov askar',
+   },
+   {
       title: 'Docker',
       description: '',
       image: '/posts/docker/logo.png',
