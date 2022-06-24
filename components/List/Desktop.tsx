@@ -12,8 +12,14 @@ import AppProps from "../../interfaces/AppProps";
 
 import { data as typescript_posts } from "../../markdown/typescript";
 import { data as javascript_posts } from "../../markdown/javascript";
+import { data as react_posts } from "../../markdown/react";
 import { data as docker_posts } from "../../markdown/docker";
 import { data as mysql_posts } from "../../markdown/mysql";
+import { data as php_posts } from "../../markdown/php";
+import { data as kubernetes_posts } from "../../markdown/kubernetes";
+import { data as yii_posts } from "../../markdown/yii";
+import { data as redis_posts } from "../../markdown/redis";
+import { data as node_js_posts } from "../../markdown/node_js";
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -71,6 +77,16 @@ export default function SelectedListItem() {
         return docker_posts;
       case "mysql":
         return mysql_posts;
+      case "php":
+        return php_posts;
+      case "kubernetes":
+        return kubernetes_posts;
+      case "yii":
+        return yii_posts;
+      case "react":
+        return react_posts;
+      case "node_js":
+        return node_js_posts;
     }
     return javascript_posts;
   }
@@ -104,14 +120,14 @@ export default function SelectedListItem() {
         sx={{ display: getPosts().length > pageSize ? "block" : "none" }}
       >
         <Pagination
-          count={Math.round(getPosts().length / pageSize)}
+          count={Math.ceil(getPosts().length / pageSize)}
           size="large"
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
             setStartInterval((page - 1) * pageSize);
             setEndInterval(page * pageSize);
           }}
         />
-      </Stack>{" "}
+      </Stack>
     </Box>
   );
 }

@@ -16,6 +16,7 @@ import { data as typescript_posts } from "../../markdown/typescript";
 import { data as javascript_posts } from "../../markdown/javascript";
 import { data as docker_posts } from "../../markdown/docker";
 import { data as mysql_posts } from "../../markdown/mysql";
+import { data as kubernetes_posts } from "../../markdown/kubernetes";
 
 type a = {
   items: number[];
@@ -58,6 +59,7 @@ export default function SelectedListItem() {
       .concat(typescript_posts)
       .concat(docker_posts)
       .concat(mysql_posts)
+      .concat(kubernetes_posts)
       .sort((a, b) => {
         var first: number = Date.parse(a.created_date);
         var second: number = Date.parse(b.created_date);
@@ -105,7 +107,7 @@ export default function SelectedListItem() {
       <Divider />
       <Stack spacing={2} sx={{ display: 1 ? "block" : "none" }}>
         <Pagination
-          count={Math.round(posts.length / pageSize)}
+          count={Math.ceil(posts.length / pageSize)}
           size="large"
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
             setStartInterval((page - 1) * pageSize);

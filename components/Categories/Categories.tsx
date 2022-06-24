@@ -17,7 +17,7 @@ export default function SelectedListItem() {
   const [startInterval, setStartInterval] = React.useState(0);
   const [endInterval, setEndInterval] = React.useState(5);
 
-  const [pageSize, setPageSize] = React.useState(5);
+  const [pageSize, setPageSize] = React.useState(6);
 
   //const routePath = "../../markdown/" + router.query.slug + "/index";
   async function load() {
@@ -78,7 +78,7 @@ export default function SelectedListItem() {
         sx={{ display: getCategories().length > pageSize ? "block" : "none" }}
       >
         <Pagination
-          count={Math.round(getCategories().length / pageSize)}
+          count={Math.ceil(getCategories().length / pageSize)}
           size="large"
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
             setStartInterval((page - 1) * pageSize);

@@ -80,7 +80,9 @@ export default function SelectedListItem() {
       <Divider />
       <Stack
         spacing={2}
-        sx={{ display: getCategories().length > pageSize ? "block" : "none" }}
+        sx={{
+          display: getCategories().length > pageSize ? "block" : "none",
+        }}
       >
         <Pagination
           count={Math.round(getCategories().length / pageSize)}
