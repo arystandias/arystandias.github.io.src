@@ -3,9 +3,9 @@
 export const data = [
    {
       title: 'Введение в MySQL',
-      description: '',
+      description: 'MySQL — свободная реляционная система управления базами данных. Разработку и поддержку MySQL осуществляет корпорация Oracle, получившая права на торговую марку вместе с поглощённой Sun Microsystems, которая ранее приобрела шведскую компанию MySQL AB.',
       image: '/posts/mysql/logo.png',
-      created_date: '03.10.2021',
+      created_date: '03.02.2022',
       author: 'shandyrov askar',
       post: '/posts/mysql/intro-1',
       url: 'intro-1',   
