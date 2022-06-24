@@ -16,6 +16,20 @@ export const data = [
       author: 'shandyrov askar',
    },
    {
+      title: 'Bash',
+      description: '',
+      image: '/posts/bash/logo.png',
+      created_date: '02.01.2022',
+      author: 'shandyrov askar',
+   },
+   {
+      title: 'MySQL',
+      description: '',
+      image: '/posts/mysql/logo.png',
+      created_date: '02.01.2022',
+      author: 'shandyrov askar',
+   },
+   {
       title: 'Docker',
       description: '',
       image: '/posts/docker/logo.png',
