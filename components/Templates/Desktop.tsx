@@ -173,6 +173,7 @@ export default function MiniDrawer({ children }: AppProps) {
         break;
       case 4:
         router.push("/notes");
+        break;
       case 5:
         router.push("/contacts");
         break;
@@ -186,6 +187,8 @@ export default function MiniDrawer({ children }: AppProps) {
   }
 
   function getSelectedIndex() {
+    console.log("Route:");
+    console.log(router.route);
     switch (router.route) {
       case "/":
         return 0;
