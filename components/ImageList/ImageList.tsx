@@ -14,23 +14,18 @@ import react from "../../public/posts/react/logo.png";
 import mysql from "../../public/posts/mysql/logo.png";
 
 interface Size {
-  width: number | undefined;
-  height: number | undefined;
+  width: number;
+  height: number;
 }
 
-interface MobileImage {
-  image: string;
-  title: string;
-  route: string;
-}
-
-function useWindowSize(): Size {
+function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState<Size>({
-    width: undefined,
-    height: undefined,
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
   });
+
   useEffect(() => {
     // Handler to call on window resize
     function handleResize() {
@@ -53,6 +48,16 @@ function useWindowSize(): Size {
 export default function StandardImageList() {
   const size: Size = useWindowSize();
   const isDesktop = useMediaQuery("(min-width:600px)", { noSsr: true });
+
+  //console.log("size:");
+  //console.log(size);
+
+  useEffect(() => {
+    if (size.height > 0) {
+      console.log("height: " + size.height);
+      console.log("width: " + size.width);
+    }
+  }, [size]);
 
   useEffect(() => {
     if (isDesktop) {
@@ -84,8 +89,8 @@ export default function StandardImageList() {
                   alt={item.title}
                   loading="lazy"
                   style={{
-                    height: size.height ? 305 : 0,
-                    width: size.width ? 358 : 0,
+                    height: size.height ? size.height / 3 : 0,
+                    width: size.width ? size.width / 5 : 0,
                   }}
                 />
               </ImageListItem>
@@ -95,8 +100,12 @@ export default function StandardImageList() {
             <Link href={item.route} key={index}>
               <ImageListItem
                 cols={2}
-                rows={2}
-                sx={{ cursor: "pointer", p: 0.1 }}
+                rows={4}
+                sx={{
+                  cursor: "pointer",
+                  width: size.width / 2,
+                  height: size.height / 3,
+                }}
               >
                 <img
                   data-w={size.width}
@@ -104,11 +113,6 @@ export default function StandardImageList() {
                   srcSet={`${item.img}`}
                   alt={item.title}
                   loading="lazy"
-                  style={{
-                    padding: 0,
-                    height: size.height ? (size.height - 128) / 4 : 0,
-                    width: size.width ? (size.width - 24) / 2 : 0,
-                  }}
                 />
               </ImageListItem>
             </Link>
@@ -197,43 +201,78 @@ const itemDataDesktop = [
 
 const itemDataMobile = [
   {
-    title: "Breakfast",
+    title: "JavaScript",
     route: "/posts/javascript",
-    img: "/languages/javascript/mobile.png",
+    img: "/posts/javascript/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
+    title: "TypeScript",
     route: "/posts/typescript",
+    img: "posts/typescript/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    route: "/",
+    title: "Docker",
+    route: "/posts/docker",
+    img: "/posts/docker/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    route: "/",
+    title: "Bash",
+    route: "/posts/bash/",
+    img: "/posts/bash/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    route: "/",
+    title: "MySQL",
+    route: "/posts/mysql",
+    img: "/posts/mysql/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    route: "/",
+    title: "React",
+    route: "/posts/react",
+    img: "/posts/react/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    route: "/",
+    title: "php",
+    route: "/posts/php",
+    img: "/posts/php/logo.png",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    route: "/",
+    title: "kubernetes",
+    route: "/posts/kubernetes",
+    img: "/posts/kubernetes/logo.png",
   },
+  // {
+  //   img: "/posts/c_sharp/logo.png",
+  //   title: "c#",
+  //   route: "/posts/c_sharp",
+  // },
+  // {
+  //   title: "node_js",
+  //   route: "/posts/node_js",
+  //   img: "/posts/node_js/logo.png",
+  // },
+  // {
+  //   title: "yii",
+  //   route: "/posts/yii",
+  //   img: "/posts/yii/logo.png",
+  // },
+  // {
+  //   img: "/posts/golang/logo.png",
+  //   title: "golang",
+  //   route: "/posts/golang/logo.png",
+  // },
+  // {
+  //   img: "/posts/html5/logo.png",
+  //   title: "html5",
+  //   route: "/posts/html5",
+  // },
+  // {
+  //   img: "/posts/redis/logo.png",
+  //   title: "redis",
+  //   route: "/posts/redis",
+  // },
+  // {
+  //   title: "1C",
+  //   route: "/posts/1c",
+  //   img: "/posts/1c/logo.png",
+  // },
 ];
