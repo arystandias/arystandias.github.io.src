@@ -48,6 +48,7 @@ function useWindowSize() {
 export default function StandardImageList() {
   const size: Size = useWindowSize();
   const isDesktop = useMediaQuery("(min-width:600px)", { noSsr: true });
+  const [hover, setHover] = useState(-1);
 
   //console.log("size:");
   //console.log(size);
@@ -72,7 +73,15 @@ export default function StandardImageList() {
       {isDesktop
         ? itemDataDesktop.map((item, index) => (
             <Link href={item.route} key={index}>
-              <ImageListItem style={{ cursor: "pointer" }}>
+              <ImageListItem
+                style={{
+                  cursor: "pointer",
+                  opacity: index === hover ? 1.0 : 0.9,
+                }}
+                onMouseOver={(e) => {
+                  setHover(index);
+                }}
+              >
                 {/* <Image
                   src={`${item.img}`}
                   alt={item.title}
