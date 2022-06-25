@@ -27,7 +27,8 @@ export default function News() {
 
   React.useEffect(() => {
     //fetch("https://api.github.com/users/arystandias")
-    fetch("https://api.github.com/gists/public")
+    //fetch("https://api.github.com/gists/public")
+    fetch("https://api.github.com/users/arystandias/gists")
       .then((response) => response.json())
       .then((data) => JSON.stringify(data))
       .then((objects) => {

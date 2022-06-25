@@ -46,7 +46,9 @@ export default function News() {
           <Box sx={{ p: 0 }}>
             <>
               <Breadcrumbs />
-              <Box sx={{ p: 4, minHeight: "80vh" }}>{/* <Notes /> */} ok</Box>
+              <Box sx={{ p: 4, minHeight: "80vh" }}>
+                <Notes />
+              </Box>
               <Footer />
             </>
           </Box>
