@@ -6,12 +6,11 @@ import { red, grey } from "@mui/material/colors";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import ListDesktop from "../../components/List/Desktop";
-import ListMobile from "../../components/List/Mobile";
 import ListCategoryDesktop from "../../components/Categories/Categories";
 import Footer from "../../components/Footer/Footer";
+//import ListDesktop from "../../components/List/Desktop";
+//import ListMobile from "../../components/List/Mobile";
 
 interface CategoryInterface {
   slug: string;
@@ -24,9 +23,6 @@ export default function Category({ slug }: CategoryInterface) {
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   //console.log(router.query);
-
-  console.log("---===SLUG===---");
-  console.log(slug);
 
   function getHeaderImage() {
     if (!isMobile) {
