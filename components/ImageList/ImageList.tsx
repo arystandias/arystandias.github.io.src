@@ -98,7 +98,7 @@ export default function StandardImageList() {
                   alt={item.title}
                   loading="lazy"
                   style={{
-                    height: size.height ? size.height / 3 - 24 : 0,
+                    height: size.height ? size.height / 3 - 10 : 0,
                     width: size.width ? size.width / 5 - 24 : 0,
                   }}
                 />
