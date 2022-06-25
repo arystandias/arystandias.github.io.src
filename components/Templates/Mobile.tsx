@@ -28,6 +28,18 @@ import FolderIcon from "@mui/icons-material/Folder";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import HomeIcon from "@mui/icons-material/Home";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import ArticleIcon from "@mui/icons-material/Article";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import AppsIcon from "@mui/icons-material/Apps";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import Tooltip from "@mui/material/Tooltip";
+import { useRouter } from "next/router";
+
+interface SelectedIndex {
+  index: number;
+}
 
 const drawerWidth = 240;
 
@@ -93,6 +105,7 @@ export default function PersistentDrawerLeft({ children }: AppProps) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("recents");
+  const router = useRouter();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -102,9 +115,66 @@ export default function PersistentDrawerLeft({ children }: AppProps) {
     setOpen(false);
   };
 
+  function setSelectedIndex({ index }: SelectedIndex) {
+    try {
+      var i = "" + index;
+      localStorage.removeItem("selected-index");
+      localStorage.setItem("selected-index", i);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  const handleListItemClick = ({ index }: SelectedIndex) => {
+    setSelectedIndex({ index });
+    switch (index) {
+      case 0:
+        router.push("/");
+        break;
+      case 1:
+        router.push("/news");
+        break;
+      case 2:
+        router.push("/category");
+        break;
+      case 3:
+        router.push("/posts");
+        break;
+      case 4:
+        router.push("/notes");
+        break;
+      case 5:
+        router.push("/contacts");
+        break;
+      default:
+        router.push("/");
+    }
+  };
+
   // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
   //   setValue("");
   // };
+
+  function getSelectedIndex() {
+    console.log("Route:");
+    console.log(router.route);
+    switch (router.route) {
+      case "/":
+        return 0;
+      case "/news":
+        return 1;
+      case "/category":
+        return 2;
+      case "/posts":
+        return 3;
+      case "/notes":
+        return 4;
+      case "/contacts":
+        return 5;
+      default:
+        return 0;
+    }
+  }
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -149,29 +219,61 @@ export default function PersistentDrawerLeft({ children }: AppProps) {
             </IconButton>
           </DrawerHeader>
           <Divider />
+
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
+            {[
+              { title: "Главная", icon: <HomeIcon />, path: "/" },
+              { title: "Новости", icon: <NewspaperIcon />, path: "/news" },
+              { title: "Категории", icon: <AppsIcon />, path: "/category" },
+              { title: "Статьи", icon: <ArticleIcon />, path: "/posts" },
+              { title: "Заметки", icon: <EventNoteIcon />, path: "/notes" },
+
+              {
+                title: "Контакты",
+                icon: <AlternateEmailIcon />,
+                path: "/contacts",
+              },
+            ].map((item, index) => (
+              <Tooltip
+                key={index}
+                title={item.title}
+                placement="right-end"
+                color={"red"}
+              >
+                <ListItem
+                  key={index}
+                  disablePadding
+                  sx={{ display: "block" }}
+                  selected={index === getSelectedIndex()}
+                  onClick={() => {
+                    handleListItemClick({ index });
+                    console.log("index1: ");
+                    console.log(index);
+                  }}
+                >
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.title}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Tooltip>
             ))}
           </List>
         </Drawer>
