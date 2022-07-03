@@ -23,22 +23,11 @@ export default function Category() {
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const [items, setItems] = useState<GistItem[]>([]);
 
-  //console.log(router.query);
-
-  // function getHeaderImage() {
-  //   return "/languages/common/header.png";
-  // }
-
   function getHeaderImage() {
-    console.log("router.query:");
-    console.log(router.query);
-
     return isMobile
       ? "/languages/common/header-mobile.png"
       : "/languages/common/header-desktop.png";
   }
-  //console.log("Items:");
-  //console.log(items);
 
   return (
     <React.Fragment>
