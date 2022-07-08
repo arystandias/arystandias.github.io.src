@@ -12,7 +12,7 @@ import TabPanel from "../components/TabPanel/TabPanel";
 import Notes from "../components/Notes/Notes";
 
 export default function News() {
-  //const [theme, setTheme] = useState('dark');
+  ////const [theme, setTheme] = useState('dark');
   //const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
