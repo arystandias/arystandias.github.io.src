@@ -1,4 +1,4 @@
 function Mobile(): JSX.Element {
-  return <></>;
+  return <p>ok</p>;
 }
 export default Mobile;

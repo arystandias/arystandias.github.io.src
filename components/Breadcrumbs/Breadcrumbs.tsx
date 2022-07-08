@@ -12,8 +12,8 @@ function IconBreadcrumbs(): JSX.Element {
   const { slug } = router.query;
   const { route } = router;
 
-  console.log("router:");
-  console.log(router);
+  //console.log("router:");
+  //console.log(router);
 
   //function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
   //  event.preventDefault();

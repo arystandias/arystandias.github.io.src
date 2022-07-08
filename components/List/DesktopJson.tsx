@@ -3,7 +3,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import Card from "../Card/Card";
 import { useRouter } from "next/router";
 
 import Stack from "@mui/material/Stack";
@@ -11,11 +10,8 @@ import Pagination from "@mui/material/Pagination";
 import usePagination from "@mui/material/usePagination";
 
 interface JsonInterface {
-  data: JsonData;
+  data: GistItem[];
 }
-type JsonData = {
-  slice: string[];
-};
 
 interface GistItem {
   id: string;
@@ -73,19 +69,16 @@ export default function SelectedListItem({ data }: JsonInterface) {
     }
   }, [startInterval]);
 
-  React.useEffect(() => {
-    fetch("https://api.github.com/users/arystandias/gists")
-      .then((r) => r.json())
-      .then((files) => {
-        console.log("---files---");
-        console.log(files);
-        // files.map(({ data }: JsonInterface) => {
-        //   console.log("File:");
-        //   console.log(data);
-        // });
-        setGists(files);
-      });
-  }, []);
+  // React.useEffect(() => {
+  //   fetch("https://api.github.com/users/arystandias/gists")
+  //     .then((r) => r.json())
+  //     .then((files) => {
+  //       console.log("---files---");
+  //       console.log(files);
+
+  //       setGists(files);
+  //     });
+  // }, []);
 
   React.useEffect(() => {
     if (endInterval) {

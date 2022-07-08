@@ -82,8 +82,8 @@ function Gists({ gist_id, content }: GistsInterface): JSX.Element {
         })
         .then((r) => {
           const values = Object.values(r.data.files as object);
-          console.log("Values:");
-          console.log(values);
+          //console.log("Values:");
+          //console.log(values);
           setItems(values);
         });
     }
@@ -103,7 +103,7 @@ function Gists({ gist_id, content }: GistsInterface): JSX.Element {
       });
 
       setRouterQuery(router.query.gists);
-      console.log(router.query.gists);
+      //console.log(router.query.gists);
       g();
     }
   }, [router.query]);

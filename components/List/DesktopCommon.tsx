@@ -31,6 +31,9 @@ export default function SelectedListItem() {
   const [pageSize, setPageSize] = React.useState(5);
   const [posts, setPosts] = React.useState<PostInterface[]>([]);
 
+  console.log("router.query:");
+  console.log(router);
+
   //const routePath = "../../markdown/" + router.query.slug + "/index";
   async function load() {
     const dynamicLoad = (
@@ -73,14 +76,14 @@ export default function SelectedListItem() {
 
   React.useEffect(() => {
     if (endInterval) {
-      console.log("endInterval:" + endInterval);
-      console.log("router.query:");
-      console.log(router.query);
+      //console.log("endInterval:" + endInterval);
+      //console.log("router.query:");
+      //console.log(router.query);
     }
   }, [endInterval]);
 
   React.useEffect(() => {
-    console.log("--->");
+    //console.log("--->");
     if (router.query.slug) {
       //setCurrent(router.query.slug);
     }
