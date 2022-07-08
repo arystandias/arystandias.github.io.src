@@ -13,14 +13,14 @@ import Notes from "../components/Notes/Notes";
 
 export default function News() {
   //const [theme, setTheme] = useState('dark');
+  //const router = useRouter();
   const theme = useTheme();
-  const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  //console.log(router.query);
-
   function getHeaderImage() {
-    return "/languages/common/header.png";
+    return isMobile
+      ? "/languages/common/header-mobile.png"
+      : "/languages/common/header-desktop.png";
   }
 
   return (
