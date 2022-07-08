@@ -20,16 +20,6 @@ interface Match {
   match: any;
 }
 
-function v({ content, match }: Data) {
-  content
-    .replace("#", "")
-    .replace("##", "")
-    .replace("###", "")
-    .replace("####", "")
-    .replace("#####", "")
-    .slice(1, match && match["index"] ? match["index"] : 1);
-}
-
 export default function MediaControlCard({
   content,
   author,
@@ -40,6 +30,9 @@ export default function MediaControlCard({
   const match: RegExpExecArray | "" | null = content
     ? /\r|\n/.exec(content)
     : null;
+
+  console.log("content:");
+  console.log(content);
   return (
     <Link href={"/"}>
       <a>
@@ -61,7 +54,10 @@ export default function MediaControlCard({
                       .replace("###", "")
                       .replace("####", "")
                       .replace("#####", "")
-                      .slice(1, match && match["index"] ? match["index"] : 1)
+                      .slice(
+                        match && match["index"] ? 1 : 0,
+                        match && match["index"] ? match["index"] : 100
+                      )
                   : ""}
               </Typography>
               <Typography
