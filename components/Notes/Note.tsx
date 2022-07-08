@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
+import { useRouter } from "next/router";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -17,6 +18,7 @@ import { GistItem } from "../GistCard/interfaces/GistItem";
 import Link from "next/link";
 import { json } from "node:stream/consumers";
 import defaultImage from "../../public/default/gist/light.png";
+import javascript_thumbnail from "../../public/default/javascript/thumbnail.png";
 
 interface Note {
   children: GistItem;
@@ -29,38 +31,55 @@ interface Note {
 // export default Note;
 
 export default function MediaControlCard({ children }: Note) {
+  const router = useRouter();
+
   const theme = useTheme();
   const [image, setImage] = React.useState("");
   const [thumbnail, setThumbnail] = React.useState("");
+  const [type, setType] = React.useState("");
+  // single post or multiple
+  const [single, setSingle] = React.useState(false);
 
   const jsonObjects: string[] = JSON.parse(JSON.stringify(children.files));
-
-  const isArray = Array.isArray(jsonObjects);
-  const firstElementExtension = Object.keys(jsonObjects)[0].split(".").pop();
+  //console.log("jsonObjects:");
+  //console.log(jsonObjects);
 
   React.useEffect(() => {
-    Object.keys(jsonObjects).map((item, index) => {
-      //console.log(index);
-      const extension = item.split(".").pop();
-      const k = Object.keys(item);
-      if ((k && extension === "png") || (k && extension === "jpg")) {
-        const p = JSON.parse(JSON.stringify(children.files));
-        const image_id = p["thumbnail.png"]
-          ? p["thumbnail.png"]["raw_url"].split("/")
-          : null;
-        if (image_id) {
-          const t = image_id[6];
-          //console.log("raw_url:");
-          //console.log(image_id[6]);
-          setThumbnail(
-            "https://gist.githubusercontent.com/arystandias/" +
-              children.id +
-              "/raw/" +
-              image_id[6]
-          );
-        }
+    const isImageExist = Object.keys(jsonObjects).map((e, index) => {
+      const extension = e.split(".").pop();
+
+      const imageExist = extension === "jpg" || extension === "png";
+      if (imageExist) {
       }
     });
+
+    if (Object.keys(jsonObjects).length === 2) {
+      Object.keys(jsonObjects).map((i, index) => {
+        console.log("I:");
+        console.log(i);
+      });
+    }
+
+    Object.keys(jsonObjects).map((item, index) => {
+      const extension = item.split(".").pop();
+      const k = Object.keys(item);
+      if (k && k.length === 1 && extension === "md") {
+        //console.log("---===MD===---");
+        const obj = JSON.parse(JSON.stringify(children.files));
+      }
+    });
+    // Устанавливаем тип (например javascript)
+    // Устанавливаем миниатюру
+    const is_javascript = children.description.indexOf("JavaScript");
+    const is_JSON = children.description.indexOf("JSON");
+    if (is_javascript > 0) {
+      setType("javascript");
+      setThumbnail("/default/javascript/thumbnail.png");
+    }
+    if (is_JSON > 0) {
+      setType("json");
+      setThumbnail("/default/json/thumbnail.png");
+    }
   }, []);
   return (
     <Card sx={{ display: "flex", mb: 1, cursor: "pointer" }}>
@@ -97,14 +116,14 @@ export default function MediaControlCard({ children }: Note) {
               </time>
             </small>
             <br />
-            <a
+            <Link
               style={{ textDecoration: "underline" }}
               href={
                 "https://gist.githubusercontent.com/arystandias/" + children.id
               }
             >
-              Источник: https://gist.github.com
-            </a>
+              <a>Источник: https://gist.github.com</a>
+            </Link>
           </Typography>
         </CardContent>
       </Box>

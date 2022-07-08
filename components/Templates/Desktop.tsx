@@ -189,8 +189,6 @@ export default function MiniDrawer({ children }: AppProps) {
   }
 
   function getSelectedIndex() {
-    console.log("Route:");
-    console.log(router.route);
     switch (router.route) {
       case "/":
         return 0;

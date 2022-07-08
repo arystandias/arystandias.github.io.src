@@ -4,14 +4,21 @@ import { useTheme, useMediaQuery } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import DesktopJson from "../List/DesktopJson";
+import GistCard from "../GistCard/GistCard";
+import { GistItem } from "../GistCard/interfaces/GistItem";
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
+import Note from "../Notes/Note";
 
-export default function News() {
+export default function Notes() {
   //const [theme, setTheme] = useState('dark');
-  const [posts, setPosts] = useState([]);
+  const [gistItems, setGistItems] = useState<GistItem[]>([]);
   const theme = useTheme();
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const [startInterval, setStartInterval] = React.useState(0);
+  const [endInterval, setEndInterval] = React.useState(5);
+  const [pageSize, setPageSize] = React.useState(5);
 
   // const p = async () => {
   //   //fetch("https://api.github.com/users/defunkt").then((resp) => {
@@ -32,15 +39,32 @@ export default function News() {
       .then((response) => response.json())
       .then((data) => JSON.stringify(data))
       .then((objects) => {
-        setPosts(JSON.parse(objects));
+        //console.log("Objects:");
+        //console.log(objects);
+        setGistItems(JSON.parse(objects));
       });
   }, []);
 
   return (
     <React.Fragment>
-      {posts.map((obj, index) => (
-        <DesktopJson key={index} data={obj} />
-      ))}
+      <>
+        {gistItems.map((gist, index) => (
+          <Note key={index}>{gist}</Note>
+        ))}
+        <Stack
+          spacing={2}
+          sx={{ display: gistItems.length > pageSize ? "block" : "none" }}
+        >
+          <Pagination
+            count={Math.round(gistItems.length / pageSize)}
+            size="large"
+            onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+              setStartInterval((page - 1) * pageSize);
+              setEndInterval(page * pageSize);
+            }}
+          />
+        </Stack>
+      </>
     </React.Fragment>
   );
 }
