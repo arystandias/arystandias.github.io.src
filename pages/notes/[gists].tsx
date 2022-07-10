@@ -104,8 +104,6 @@ export default function Category() {
     }
 
     if (router_query_gists) {
-      console.log("router_query_gists:");
-      console.log(router_query_gists);
       loadGists();
     }
   }, [router_query_gists]);
