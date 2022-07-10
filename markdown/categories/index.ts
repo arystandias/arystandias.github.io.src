@@ -1,6 +1,12 @@
 
-
-export const data = [
+interface Category {
+   title: string;
+   description: string;
+   image: string;
+   created_date: string;
+   author: string;
+}
+export const data:Category[] = [
    {
       title: 'JavaScript',
       description: '',
