@@ -17,6 +17,7 @@ import thumbnail_json from "../../public/default/json/thumbnail.png";
 import { withRouter } from "next/router";
 import { Octokit, App } from "octokit";
 import { ParsedUrlQuery } from "node:querystring";
+import GistsInterface from "../../components/Gists/interfaces/GistsInterface";
 
 // 2cfa41029f90b716fd36a99cc9252183
 
@@ -33,12 +34,15 @@ export default function Category() {
   const [description, setDescription] = useState<string | null | undefined>();
 
   const [router_query, setRouterQuery] = useState<ParsedUrlQuery>(router.query);
+  const [router_query_gists, setRouterQueryGists] = useState<ParsedUrlQuery[]>(
+    []
+  );
 
   React.useEffect(() => {
     //console.log("Router:");
     //console.log(router);
     const octokit = new Octokit({
-      auth: "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",
+      auth: "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",
     });
 
     // async function a() {
@@ -52,10 +56,32 @@ export default function Category() {
     // owner: "arystandias",
     //   repo: "2cfa41029f90b716fd36a99cc9252183",
     //   path: "main.md",
+    async function load() {
+      const octokit = new Octokit({
+        auth: `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`,
+      });
+
+      const {
+        data: { login },
+      } = await octokit.rest.users.getAuthenticated();
+      console.log("Hello, %s", login);
+    }
+
+    //console.log("package name: %s", JSON.parse(data).name);\
+
+    //console.log("Category()");
+    //load();
+  }, []);
+
+  React.useEffect(() => {
     async function loadGists() {
+      const octokit = new Octokit({
+        auth: `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`,
+      });
       await octokit
         .request("GET /gists/{gist_id}", {
-          gist_id: "d4fe4434e48a68779691896c87940413",
+          gist_id: "2cfa41029f90b716fd36a99cc9252183",
+          //gist_id: router_query_gists.join(""),
         })
         .then((r) => {
           const desc: string | null | undefined = r.data.description;
@@ -63,19 +89,40 @@ export default function Category() {
 
           setCreatedAt(created_at);
           setDescription(desc);
+          //console.log("r.data.files:");
+          //console.log(r.data.files);
+
+          const keys = r.data.files ? Object.keys(r.data.files) : undefined;
+          const values = r.data.files ? Object.values(r.data.files) : undefined;
+
+          //console.log("Keys:");
+          //console.log(keys);
+          //console.log("Values:");
+          //console.log(values);
+
+          const objects = JSON.parse(JSON.stringify(r.data.files));
+          const t = Object.keys(objects).map((object, index) => object[index]);
+          //console.log("t:");
+          //console.log(t);
+        })
+        .catch((o) => {
+          console.error(o);
         });
     }
-    //g();
-    //console.log("package name: %s", JSON.parse(data).name);\
-    setRouterQuery(router.query);
-  }, []);
+
+    if (router_query_gists) {
+      console.log("router_query_gists:");
+      console.log(router_query_gists);
+      loadGists();
+    }
+  }, [router_query_gists]);
 
   function getHeaderImage() {
     return isMobile
       ? "/languages/common/header-mobile.png"
       : "/languages/common/header-desktop.png";
   }
-
+  //console.log(router_query.gists as string);
   return (
     <React.Fragment>
       <CssBaseline />

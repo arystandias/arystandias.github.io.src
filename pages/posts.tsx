@@ -18,7 +18,7 @@ export default function Category() {
   //console.log(router.query);
 
   function getHeaderImage() {
-    return "/languages/common/header.png";
+    return "/languages/common/header-desktop.png";
   }
 
   return (
