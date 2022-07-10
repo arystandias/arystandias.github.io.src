@@ -19,7 +19,11 @@ export default function News() {
   //console.log(router.query);
 
   function getHeaderImage() {
-    return "/languages/common/header.png";
+    if (!isMobile) {
+      return "/languages/common/header-desktop.png";
+    }
+
+    return "/languages/common/header-mobile.png";
   }
 
   return (
