@@ -95,15 +95,8 @@ export default function Category() {
           const keys = r.data.files ? Object.keys(r.data.files) : undefined;
           const values = r.data.files ? Object.values(r.data.files) : undefined;
 
-          //console.log("Keys:");
-          //console.log(keys);
-          //console.log("Values:");
-          //console.log(values);
-
           const objects = JSON.parse(JSON.stringify(r.data.files));
           const t = Object.keys(objects).map((object, index) => object[index]);
-          //console.log("t:");
-          //console.log(t);
         })
         .catch((o) => {
           console.error(o);
