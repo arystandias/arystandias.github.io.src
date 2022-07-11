@@ -12,8 +12,6 @@ import ListDesktop from "../../components/List/Desktop";
 import ListMobile from "../../components/List/Mobile";
 import Footer from "../../components/Footer/Footer";
 
-//import ListItem from '../ListItem/ListItemDesktop';
-
 interface CategoryInterface {
   slug: string;
 }
@@ -24,17 +22,12 @@ export default function Category({ slug }: CategoryInterface) {
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  //console.log(router.query);
-
-  //console.log("---===SLUG===---");
-  //console.log(slug);
-
   function getHeaderImage() {
     if (router.query.slug !== undefined && !isMobile) {
       return "/languages/" + router.query.slug + "/desktop.png";
     }
     if (router.query.slug !== undefined && isMobile) {
-      return "/languages/" + router.query.slug + "/mobile_post_header.png";
+      return "/languages/" + router.query.slug + "/mobile.png";
     }
     return undefined;
   }
