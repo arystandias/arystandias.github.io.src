@@ -3,7 +3,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Contacts from "../TabPanel/Contacts";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,39 +45,26 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        flexWrap: "wrap",
-        paddingLeft: 2,
-        paddingTop: 0,
-      }}
-    >
-      <Box sx={{ borderBottom: 1, borderColor: "divider", paddingLeft: 2 }}>
-        <Tabs value={value} onChange={handleChange} aria-label="example">
-          <Tab label="Обо мне" {...a11yProps(0)} />
-          <Tab label="Проекты" {...a11yProps(1)} />
-          <Tab label="Контакты" {...a11yProps(0)} />
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+        Item One
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Проекты
+        Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Contacts />
+        Item Three
       </TabPanel>
     </Box>
   );
