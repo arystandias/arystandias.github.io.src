@@ -55,21 +55,22 @@ export default function StandardImageList() {
 
   useEffect(() => {
     if (size.height > 0) {
-      console.log("height: " + size.height);
-      console.log("width: " + size.width);
+      //console.log("height: " + size.height);
+      //console.log("width: " + size.width);
     }
   }, [size]);
 
   useEffect(() => {
     if (isDesktop) {
-      console.log("isDesktop");
+      //console.log("isDesktop");
     } else {
-      console.log("IS Mobile");
+      //console.log("IS Mobile");
     }
   }, [isDesktop]);
 
   return (
-    <ImageList sx={{ padding: 0, margin: 0 }} cols={5}>
+    // <ImageList sx={{ padding: 0, margin: 0 }} cols={5}>
+    <ImageList sx={{ padding: 0, margin: 0 }} cols={6}>
       {isDesktop
         ? itemDataDesktop.map((item, index) => (
             <Link href={item.route} key={index}>
@@ -92,14 +93,16 @@ export default function StandardImageList() {
                   loading="lazy"
                 /> */}
                 <img
-                  data-w={size.width}
-                  data-h={size.height}
+                  //data-w={size.width}
+                  //data-h={size.height}
                   srcSet={`${item.img}`}
                   alt={item.title}
                   loading="lazy"
                   style={{
-                    height: size.height ? size.height / 3 - 10 : 0,
-                    width: size.width ? size.width / 5 - 24 : 0,
+                    //height: size.height ? size.height / 3 - 10 : 0,
+                    //width: size.width ? size.width / 5 - 24 : 0,
+                    height: size.height ? size.height / 4 - 10 : 0,
+                    width: size.width ? size.width / 6 - 24 : 0,
                   }}
                 />
               </ImageListItem>
@@ -205,6 +208,51 @@ const itemDataDesktop = [
     title: "1C",
     route: "/posts/1c",
     img: "/posts/1c/logo.png",
+  },
+  {
+    img: "/posts/html5/logo.png",
+    title: "html5",
+    route: "/posts/html5",
+  },
+  {
+    img: "/posts/redis/logo.png",
+    title: "redis",
+    route: "/posts/redis",
+  },
+  {
+    title: "1C",
+    route: "/posts/1c",
+    img: "/posts/1c/logo.png",
+  },
+  {
+    img: "/posts/html5/logo.png",
+    title: "html5",
+    route: "/posts/html5",
+  },
+  {
+    img: "/posts/redis/logo.png",
+    title: "redis",
+    route: "/posts/redis",
+  },
+  {
+    title: "1C",
+    route: "/posts/1c",
+    img: "/posts/1c/logo.png",
+  },
+  {
+    img: "/posts/html5/logo.png",
+    title: "html5",
+    route: "/posts/html5",
+  },
+  {
+    img: "/posts/redis/logo.png",
+    title: "redis",
+    route: "/posts/redis",
+  },
+  {
+    title: "git",
+    route: "/posts/git",
+    img: "/posts/git/logo.png",
   },
 ];
 
