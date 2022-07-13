@@ -72,9 +72,9 @@ function Gists({ gist_id, content }: GistsInterface): JSX.Element {
     string | null | undefined
   >();
 
-  async function g() {
+  async function load() {
     const octokit = new Octokit({
-      auth: "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",
+      auth: "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",
     });
     if (octokit) {
       await octokit
@@ -83,8 +83,6 @@ function Gists({ gist_id, content }: GistsInterface): JSX.Element {
         })
         .then((r) => {
           const values = Object.values(r.data.files as object);
-          //console.log("Values:");
-          //console.log(values);
           setItems(values);
         });
     }
@@ -94,6 +92,7 @@ function Gists({ gist_id, content }: GistsInterface): JSX.Element {
 
   useEffect(() => {
     if (router.isReady) {
+      load();
     }
   }, [router.isReady]);
 

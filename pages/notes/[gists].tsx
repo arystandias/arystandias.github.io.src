@@ -28,19 +28,31 @@ export default function Category() {
   const [createdAt, setCreatedAt] = React.useState<string | undefined>("");
   //const [theme, setTheme] = useState('dark');
   const theme = useTheme();
-  const [gists, setGists] = useState<string[]>([]);
+  const [gists, setGists] = useState<GistsInterface[]>([]);
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const [items, setItems] = useState<GistItem[]>([]);
   const [description, setDescription] = useState<string | null | undefined>();
 
   const [router_query, setRouterQuery] = useState<ParsedUrlQuery>(router.query);
-  const [router_query_gists, setRouterQueryGists] = useState<ParsedUrlQuery[]>(
-    []
+  // const [router_query_gists, setRouterQueryGists] = useState<ParsedUrlQuery[]>(
+  //   []
+  // );
+  const [router_query_gists, setRouterQueryGists] = useState<string[] | string>(
+    ""
   );
 
   React.useEffect(() => {
-    //console.log("Router:");
-    //console.log(router);
+    if (gists) {
+    }
+  }, [gists]);
+
+  React.useEffect(() => {
+    if (router_query_gists) {
+      loadGists();
+    }
+  }, [router_query_gists]);
+
+  React.useEffect(() => {
     const octokit = new Octokit({
       auth: "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",
     });
@@ -68,45 +80,60 @@ export default function Category() {
     }
 
     //console.log("package name: %s", JSON.parse(data).name);\
-
-    //console.log("Category()");
-    //load();
   }, []);
 
-  React.useEffect(() => {
-    async function loadGists() {
-      const octokit = new Octokit({
-        auth: `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`,
+  async function loadGists() {
+    const octokit = new Octokit({
+      auth: `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`,
+    });
+    await octokit
+      .request("GET /gists/{gist_id}", {
+        gist_id: router_query_gists as string,
+      })
+      .then((r) => {
+        const desc: string | null | undefined = r.data.description;
+        const created_at: string | undefined = r.data.created_at;
+
+        setCreatedAt(created_at);
+        setDescription(desc);
+        //console.log("r.data.files:");
+        //console.log(r.data.files);
+
+        const keys = r.data.files ? Object.keys(r.data.files) : undefined;
+        const values = r.data.files ? Object.values(r.data.files) : undefined;
+
+        const objects = JSON.parse(JSON.stringify(r.data.files));
+        //const t = Object.keys(objects).map((object, index) => object[index]);
+        //console.log("T");
+        //console.log(t);
+        console.log("--==objects==--");
+        console.log(objects);
+
+        // var array = Object.keys(obj).map(function (key) {
+        //   return obj[key];
+        // });
+
+        const data: GistItem[] = Object.keys(objects).map(
+          (key) => objects[key]
+        );
+        console.log("Data:");
+        console.log(data);
+
+        setGists(data);
+      })
+      .catch((o) => {
+        console.error(o);
       });
-      await octokit
-        .request("GET /gists/{gist_id}", {
-          gist_id: "2cfa41029f90b716fd36a99cc9252183",
-          //gist_id: router_query_gists.join(""),
-        })
-        .then((r) => {
-          const desc: string | null | undefined = r.data.description;
-          const created_at: string | undefined = r.data.created_at;
+  }
 
-          setCreatedAt(created_at);
-          setDescription(desc);
-          //console.log("r.data.files:");
-          //console.log(r.data.files);
-
-          const keys = r.data.files ? Object.keys(r.data.files) : undefined;
-          const values = r.data.files ? Object.values(r.data.files) : undefined;
-
-          const objects = JSON.parse(JSON.stringify(r.data.files));
-          const t = Object.keys(objects).map((object, index) => object[index]);
-        })
-        .catch((o) => {
-          console.error(o);
-        });
-    }
-
-    if (router_query_gists) {
-      loadGists();
-    }
-  }, [router_query_gists]);
+  // React.useEffect(() => {
+  //   if (router.query.gists) {
+  //     console.log("router q gists:");
+  //     console.log(router.query.gists);
+  //     setRouterQueryGists(router.query.gists);
+  //     //loadGists();
+  //   }
+  // }, [router.query.gists]);
 
   function getHeaderImage() {
     return isMobile
@@ -142,7 +169,7 @@ export default function Category() {
                   <GistsMobile gist_id={"" + router_query} />
                 ) : (
                   <GistsDesktop
-                    gist_id={router_query.gists}
+                    gist_id={gists as string[]}
                     content={"okk"}
                     created_date={createdAt}
                     author={"Shandyrov"}
