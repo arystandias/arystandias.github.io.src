@@ -9,13 +9,13 @@ import ListDesktop from "../components/List/DesktopCommon";
 import ListMobile from "../components/List/MobileCommon";
 import Footer from "../components/Footer/Footer";
 import TabPanel from "../components/TabPanel/TabPanel";
+import Link from "@mui/material/Link";
 
 export default function News() {
   //const [theme, setTheme] = useState('dark');
   const theme = useTheme();
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
-
   //console.log(router.query);
 
   function getHeaderImage() {
@@ -64,14 +64,16 @@ export default function News() {
                   alignItems: "flex-start",
                 }}
               >
-                <img
-                  src={getAvatarImage()}
-                  width={"25%"}
-                  height={"25%"}
-                  //srcSet={`${item.img}`}
-                  alt={"avatar_image"}
-                  loading="lazy"
-                />
+                <Link href={getAvatarImage()} underline="always">
+                  <img
+                    src={getAvatarImage()}
+                    //width={"25%"}
+                    //height={"25%"}
+                    //srcSet={`${item.img}`}
+                    alt={"avatar_image"}
+                    loading="lazy"
+                  />
+                </Link>
                 <TabPanel />
               </Box>
               <Footer />
