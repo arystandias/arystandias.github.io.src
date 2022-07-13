@@ -56,9 +56,10 @@ interface GistItemInterface {
 }
 function Gists({ gist_id, content }: GistsInterface): JSX.Element {
   const router = useRouter();
+  const [items, setItems] = useState<GistsInterface[]>([]);
+
   const [title, setTitle] = React.useState<string | null | undefined>("");
   const [files, setFiles] = React.useState<GistsInterface[]>([]);
-  const [items, setItems] = useState<GistsInterface[]>([]);
   const [ready, setReady] = useState<boolean>(false);
   //const gist_url = "https://api.github.com/gists/" + gist_id;
   const [router_query, setRouterQuery] = useState<
@@ -104,7 +105,7 @@ function Gists({ gist_id, content }: GistsInterface): JSX.Element {
 
       setRouterQuery(router.query.gists);
       //console.log(router.query.gists);
-      g();
+      //g();
     }
   }, [router.query]);
 

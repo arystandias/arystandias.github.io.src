@@ -6,6 +6,7 @@ import { red, grey } from "@mui/material/colors";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Octokit, App } from "octokit";
 
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ListDesktop from "../../components/List/Desktop";
@@ -21,16 +22,27 @@ export default function Category({ slug }: CategoryInterface) {
   const theme = useTheme();
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const octokit = new Octokit({
+    auth: "personal-access-token123",
+  });
 
   function getHeaderImage() {
-    if (router.query.slug !== undefined && !isMobile) {
+    if (!isMobile) {
       return "/languages/" + router.query.slug + "/desktop.png";
     }
-    if (router.query.slug !== undefined && isMobile) {
-      return "/languages/" + router.query.slug + "/mobile.png";
-    }
-    return undefined;
+
+    return "/languages/" + router.query.slug + "/mobile.png";
   }
+
+  // function getHeaderImage() {
+  //   if (router.query.slug !== undefined && !isMobile) {
+  //     return "/languages/" + router.query.slug + "/desktop.png";
+  //   }
+  //   if (router.query.slug !== undefined && isMobile) {
+  //     return "/languages/" + router.query.slug + "/mobile.png";
+  //   }
+  //   return undefined;
+  // }
 
   return (
     <React.Fragment>
@@ -45,7 +57,7 @@ export default function Category({ slug }: CategoryInterface) {
         >
           <img
             src={getHeaderImage()}
-            width={"100%"}
+            width={isMobile ? "100%" : "1488"}
             height={150}
             //srcSet={`${item.img}`}
             alt={"header_image"}

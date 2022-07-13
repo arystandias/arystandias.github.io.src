@@ -31,8 +31,8 @@ export default function MediaControlCard({
     ? /\r|\n/.exec(content)
     : null;
 
-  console.log("content:");
-  console.log(content);
+  //console.log("content:");
+  //console.log(content);
   return (
     <Link href={"/"}>
       <a>
