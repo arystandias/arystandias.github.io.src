@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import ListCategoryDesktop from "../../components/Categories/Categories";
+import ListCategoryDesktop from "../../components/Categories/Desktop";
+import ListCategoryMobile from "../../components/Categories/Mobile";
 import Footer from "../../components/Footer/Footer";
 
 interface CategoryInterface {
@@ -51,7 +52,7 @@ export default function Category({ slug }: CategoryInterface) {
             <>
               <Breadcrumbs />
               <Box sx={{ p: 4, minHeight: "80vh" }}>
-                {isMobile ? <>all category mobile</> : <ListCategoryDesktop />}
+                {isMobile ? <ListCategoryMobile /> : <ListCategoryDesktop />}
               </Box>
               <Footer />
             </>

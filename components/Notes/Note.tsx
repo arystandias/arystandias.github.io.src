@@ -24,12 +24,6 @@ interface Note {
   children: GistItem;
 }
 
-// const Note = ({ children }: Note): JSX.Element => {
-//   return <>{children.id}</>;
-// };
-
-// export default Note;
-
 export default function MediaControlCard({ children }: Note) {
   const router = useRouter();
 
@@ -55,8 +49,8 @@ export default function MediaControlCard({ children }: Note) {
 
     if (Object.keys(jsonObjects).length === 2) {
       Object.keys(jsonObjects).map((i, index) => {
-        console.log("I:");
-        console.log(i);
+        //console.log("I:");
+        //console.log(i);
       });
     }
 
