@@ -24,8 +24,8 @@ export default function Category({ slug }: CategoryInterface) {
 
   //console.log(router.query);
 
-  console.log("---===SLUG===---");
-  console.log(slug);
+  //console.log("---===SLUG===---");
+  //console.log(slug);
 
   function getHeaderImage() {
     if (!isMobile) {
